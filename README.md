@@ -1,14 +1,14 @@
 # time for scala
 [![Build Status](https://travis-ci.org/johanandren/timeforscala.svg)](https://travis-ci.org/johanandren/timeforscala)
 
-A minimal library of factories and implicit decorators for the Java 8 time API
+A minimal library of factories and implicit decorators for the Java 8 time API (java.time.*)
 to make it more user friendly and concise to use from Scala.
 
 ## Requirements
 Java 8, Scala 2.11+
 
 ## Using
-libraryDependencies += "com.markatta" %% "timeforscala" % "1.1"
+`libraryDependencies += "com.markatta" %% "timeforscala" % "1.1"`
 
 ## Examples
 
@@ -59,6 +59,19 @@ val zdt1 = ZonedDateTime(LocalDate(2015, 1, 1), LocalTime(20, 30, 10), ZoneId.of
 // java.time.YearMonth
 val ym1 = YearMonth(2015, 1)
 val ym2 = YearMonth(2015, January)
+```
+
+### Pattern matching
+`unnaply` methods are provided for `LocalTime`, `LocalDate`, `ZonedDateTime` and `YearMonth` so that instances can be pattern matched against.
+
+Example:
+```scala
+val date = LocalDate(2015, January, 5)
+
+date match {
+  case LocalDate(2015, month, day) => println(s"Found $day/$month")
+  case LocalDate(year, _, _) => println(s"Wanted 2015 got $year")
+}
 ```
 
 ### Scala-like accessors
