@@ -62,7 +62,7 @@ val ym2 = YearMonth(2015, January)
 ```
 
 ### Pattern matching
-`unnaply` methods are provided for `LocalTime`, `LocalDate`, `ZonedDateTime` and `YearMonth` so that instances can be pattern matched against.
+`unapply` methods are provided for `LocalTime`, `LocalDate`, `ZonedDateTime` and `YearMonth` so that instances can be pattern matched against.
 
 Example:
 ```scala
