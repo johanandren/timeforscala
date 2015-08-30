@@ -1,4 +1,5 @@
 # time for scala
+[![Build Status](https://travis-ci.org/johanandren/timeforscala.svg)](https://travis-ci.org/johanandren/timeforscala)
 
 A minimal library of factories and implicit decorators for the Java 8 time API
 to make it more user friendly and concise to use from Scala.
