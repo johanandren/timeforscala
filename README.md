@@ -61,6 +61,13 @@ val ym1 = YearMonth(2015, 1)
 val ym2 = YearMonth(2015, January)
 ```
 
+### Scala-like accessors
+For most of the `java.time` classes
+```scala
+val t = LocalDateTime(2015, 1, 1, 20, 30, 5)
+println(s"It happened ${t.hour}:{t.minute} the ${t.dayOfMonth} ${t.month} in ${t.year}")
+```
+
 ### Comparing
 Ordered is implemented for LocalDateTime, LocalDate, LocalTime, ZonedDateTime, Instant, Duration, Period and YearMonth
 so that those can be compared using '<' '>' etc.
@@ -76,7 +83,7 @@ assert(last > first)
 assert(last != first)
 ```
 
-### arithmetic
+### Arithmetic
 Most decorators provide + and - with other types considered sane.
 
 ```scala
@@ -103,7 +110,7 @@ assert(LocalDate(2015, March, 1) - Months(2) == LocalDate(2015, January, 1))
 // and so on
 ```
 
-### other useful things
+### Other useful things
 Transform a `java.time.Duration` into a `scala.concurrent.FiniteDuration`
 
 ```scala
