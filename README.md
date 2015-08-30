@@ -8,7 +8,7 @@ to make it more user friendly and concise to use from Scala.
 Java 8, Scala 2.11+
 
 ## Using
-TODO - publish to maven central
+libraryDependencies += "com.markatta" %% "timeforscala" % "1.1"
 
 ## Examples
 
