@@ -61,6 +61,27 @@ val ym1 = YearMonth(2015, 1)
 val ym2 = YearMonth(2015, January)
 ```
 
+### Creating instances with mini DSL
+To not clash with the `scala.concurrent.duration` implicits that create `FiniteDuration`s this is in a separate import.
+Works the same as the counterparts but creates `java.time.Duration` and `java.time.Period`
+
+Example
+```scala
+import com.markatta.timeforscala.TimeExpressions._
+
+val d1 = 1 nano
+val d2 = 2 millis
+val d3 = 2 seconds
+val d4 = 3 minutes
+val d5 = 1 hour
+
+val p1 = 5 days
+val p2 = 1 week
+val p3 = 7 months
+val p4 = 2 years
+```
+
+
 ### Pattern matching
 `unapply` methods are provided for `LocalTime`, `LocalDate`, `ZonedDateTime` and `YearMonth` so that instances can be pattern matched against.
 
