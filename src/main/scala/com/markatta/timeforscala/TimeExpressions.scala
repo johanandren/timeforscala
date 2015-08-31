@@ -16,7 +16,7 @@ import java.time.{Period, Duration}
 object TimeExpressions {
 
 
-  final implicit class RichInt(n: Int) extends AnyVal {
+  final implicit class RichInt(val n: Int) extends AnyVal {
     def hour: Duration = Hours(n)
     def hours: Duration = Hours(n)
     def minute: Duration = Minutes(n)
