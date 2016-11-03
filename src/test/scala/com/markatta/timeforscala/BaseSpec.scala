@@ -16,6 +16,6 @@
 
 package com.markatta.timeforscala
 
-import org.scalatest.{WordSpec, ShouldMatchers}
+import org.scalatest.{WordSpec, Matchers}
 
-abstract class BaseSpec extends WordSpec with ShouldMatchers
+abstract class BaseSpec extends WordSpec with Matchers

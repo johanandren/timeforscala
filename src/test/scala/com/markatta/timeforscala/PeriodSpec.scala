@@ -22,8 +22,8 @@ class PeriodSpec extends BaseSpec {
 
     "create instances" in {
       val p = Period(years = 1, months = 2, days = 3)
-      p.years shouldEqual 1
-      p.months shouldEqual 2
+      p.years shouldEqual (1)
+      p.months shouldEqual (2)
       p.days shouldEqual  3
 
       Days(10).days shouldEqual 10

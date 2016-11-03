@@ -3,12 +3,12 @@ import _root_.sbtrelease.ReleasePlugin._
 import _root_.xerial.sbt.Sonatype._
 import de.heikoseeberger.sbtheader.license.Apache2_0
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 organization := "com.markatta"
 description := "Simple Scala-y wrappers for the Java 8 time APIs"
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "2.2.4" % "test"
+  "org.scalatest" %% "scalatest" % "3.0.0" % Test
 )
 
 headers := Map(
@@ -19,6 +19,7 @@ headers := Map(
 releaseSettings
 sonatypeSettings
 ReleaseKeys.crossBuild := true
+crossScalaVersions := Seq("2.11.8", "2.12.0")
 licenses := Seq("Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0"))
 homepage := Some(url("https://github.com/johanandren/timeforscala"))
 publishMavenStyle := true
