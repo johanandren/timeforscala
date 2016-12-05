@@ -18,6 +18,7 @@ package com.markatta.timeforscala
 
 import java.time._
 import java.time.temporal.TemporalAccessor
+import java.util.Locale
 
 import scala.concurrent.duration.FiniteDuration
 
@@ -177,6 +178,10 @@ object ZonedDateTime {
   def apply(iso8601DateTime: String): ZonedDateTime =
     java.time.ZonedDateTime.parse(iso8601DateTime)
 
+
+  def apply(dateTimeString: String, formatter: DateTimeFormatter): ZonedDateTime =
+    java.time.ZonedDateTime.parse(dateTimeString, formatter)
+
   /** @return now according to the system clock */
   def apply(): ZonedDateTime = java.time.ZonedDateTime.now()
   /** @return now according to the given clock */
@@ -211,5 +216,25 @@ object YearMonth {
   def apply(clock: Clock): YearMonth = java.time.YearMonth.now(clock)
   /** @return now in the given time zone */
   def apply(zone: ZoneId): YearMonth = java.time.YearMonth.now(zone)
+
+}
+
+object DateTimeFormatter {
+  val IsoLocalDate: DateTimeFormatter = java.time.format.DateTimeFormatter.ISO_LOCAL_DATE
+
+  val IsoOffsetDate: DateTimeFormatter = java.time.format.DateTimeFormatter.ISO_OFFSET_DATE
+
+  val IsoDate: DateTimeFormatter = java.time.format.DateTimeFormatter.ISO_DATE
+
+  val IsoLocalTime: DateTimeFormatter = java.time.format.DateTimeFormatter.ISO_LOCAL_TIME
+
+  val IsoOffsetTime: DateTimeFormatter = java.time.format.DateTimeFormatter.ISO_OFFSET_TIME
+
+  val Rfc1123DateTime: DateTimeFormatter = java.time.format.DateTimeFormatter.RFC_1123_DATE_TIME
+
+  def apply(pattern: String): DateTimeFormatter = java.time.format.DateTimeFormatter.ofPattern(pattern)
+
+  def apply(pattern: String, locale: Locale): DateTimeFormatter =
+    java.time.format.DateTimeFormatter.ofPattern(pattern, locale)
 
 }

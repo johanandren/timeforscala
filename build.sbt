@@ -8,7 +8,7 @@ organization := "com.markatta"
 description := "Simple Scala-y wrappers for the Java 8 time APIs"
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.0.0" % Test
+  "org.scalatest" %% "scalatest" % "3.0.1" % Test
 )
 
 headers := Map(
@@ -19,7 +19,7 @@ headers := Map(
 releaseSettings
 sonatypeSettings
 ReleaseKeys.crossBuild := true
-crossScalaVersions := Seq("2.11.8", "2.12.0")
+crossScalaVersions := Seq("2.11.8", "2.12.1")
 licenses := Seq("Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0"))
 homepage := Some(url("https://github.com/johanandren/timeforscala"))
 publishMavenStyle := true

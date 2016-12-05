@@ -16,7 +16,6 @@
 
 package com.markatta.timeforscala
 
-import java.time.{Period, Duration}
 
 /**
  * Provides implicit decoration for ints and longs so that durations and periods can be created
