@@ -42,4 +42,15 @@ package object timeforscala {
   val November = Month.NOVEMBER
   val December = Month.DECEMBER
 
+  type LocalTime = java.time.LocalTime
+  type Instant = java.time.Instant
+  type YearMonth = java.time.YearMonth
+  type Duration = java.time.Duration
+  type LocalDate = java.time.LocalDate
+  type LocalDateTime = java.time.LocalDateTime
+  type ZonedDateTime = java.time.ZonedDateTime
+  type Period = java.time.Period
+
+  type DateTimeFormatter = java.time.format.DateTimeFormatter
+
 }

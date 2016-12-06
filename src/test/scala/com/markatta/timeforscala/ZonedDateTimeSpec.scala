@@ -17,6 +17,7 @@
 package com.markatta.timeforscala
 
 import java.time.ZoneId
+import java.util.Locale
 
 class ZonedDateTimeSpec extends BaseSpec {
 
@@ -65,7 +66,17 @@ class ZonedDateTimeSpec extends BaseSpec {
       result.minutes shouldEqual 20
     }
 
+    "parse custom DT format" in {
+      val formatter = DateTimeFormatter("dd MMM yyyy HH:mm:ss z", Locale.ENGLISH)
+      val result = ZonedDateTime("06 Nov 1994 08:49:37 GMT", formatter)
+      result shouldEqual ZonedDateTime(LocalDate(1994, 11, 6), LocalTime(8, 49, 37), ZoneId.of("GMT"))
+    }
 
+    "parse RFC_1123 DT format" in {
+      val formatter = DateTimeFormatter.Rfc1123DateTime
+      val result = ZonedDateTime("Sun, 06 Nov 1994 08:49:37 GMT", formatter)
+      result shouldEqual ZonedDateTime(LocalDate(1994, 11, 6), LocalTime(8, 49, 37), ZoneId.of("Z"))
+    }
   }
 
 }
