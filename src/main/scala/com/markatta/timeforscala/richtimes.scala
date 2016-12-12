@@ -16,9 +16,6 @@
 
 package com.markatta.timeforscala
 
-import java.time._
-import java.time.chrono.{IsoChronology, Chronology}
-import java.time.temporal._
 import java.util.concurrent.TimeUnit
 
 import scala.concurrent.duration.FiniteDuration
@@ -41,7 +38,7 @@ final class RichLocalDateTime private[timeforscala](l: LocalDateTime) extends Or
   def +(amount: Duration): LocalDateTime = l.plus(amount)
   def -(amount: Duration): LocalDateTime= l.minus(amount)
 
-  def -(other: LocalDateTime): Duration = java.time.Duration.between(l, other)
+  def -(other: LocalDateTime): Duration = Duration.between(l, other)
 
   override def compare(that: LocalDateTime): Int = l.compareTo(that)
 }
@@ -103,7 +100,7 @@ final class RichZonedDateTime private[timeforscala](z: ZonedDateTime) extends Or
   def +(amount: Duration): ZonedDateTime = z.plus(amount)
   def -(amount: Duration): ZonedDateTime = z.minus(amount)
 
-  def -(other: ZonedDateTime): Duration = java.time.Duration.between(z, other)
+  def -(other: ZonedDateTime): Duration = Duration.between(z, other)
 
   def chronology: Chronology = z.getChronology
   override def compare(other: ZonedDateTime): Int = z.compareTo(other)
@@ -126,8 +123,8 @@ final class RichDuration private[timeforscala](d: Duration) extends Ordered[Dura
 
   def -(other: Duration): Duration = d.minus(other)
   def +(other: Duration): Duration = d.plus(other)
-  def /(divisor: Long) = d.dividedBy(divisor)
-  def *(scalar: Long) = d.multipliedBy(scalar)
+  def /(divisor: Long): Duration = d.dividedBy(divisor)
+  def *(scalar: Long): Duration = d.multipliedBy(scalar)
 
   def toFiniteDuration: FiniteDuration = {
     val seconds = FiniteDuration(d.getSeconds, TimeUnit.SECONDS)
@@ -141,9 +138,9 @@ final class RichDuration private[timeforscala](d: Duration) extends Ordered[Dura
 
 final class RichPeriod private[timeforscala](p: Period) extends Ordered[Period] {
 
-  def days = p.getDays
-  def months = p.getMonths
-  def years = p.getYears
+  def days: Int = p.getDays
+  def months: Int = p.getMonths
+  def years: Int = p.getYears
   def chronology: IsoChronology = p.getChronology
 
   def -(other: TemporalAmount): Period = p.minus(other)
