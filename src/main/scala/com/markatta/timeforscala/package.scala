@@ -16,8 +16,6 @@
 
 package com.markatta
 
-import java.time._
-
 package object timeforscala {
 
   import scala.language.implicitConversions
@@ -30,18 +28,33 @@ package object timeforscala {
   implicit def richZonedDateTime(zdt: ZonedDateTime): RichZonedDateTime = new RichZonedDateTime(zdt)
   implicit def richPeriod(p: Period): RichPeriod = new RichPeriod(p)
 
-  val January = Month.JANUARY
-  val February = Month.FEBRUARY
-  val March = Month.MARCH
-  val May = Month.MAY
-  val June = Month.JUNE
-  val July = Month.JULY
-  val August = Month.AUGUST
-  val September = Month.SEPTEMBER
-  val October = Month.OCTOBER
-  val November = Month.NOVEMBER
-  val December = Month.DECEMBER
+  @deprecated("Please, use [[com.markatta.timeforscala.Month.January]] instead", "com.markatta.timeforscala 1.4")
+  val January = Month.January
+  @deprecated("Please, use [[com.markatta.timeforscala.Month.February]] instead", "com.markatta.timeforscala 1.4")
+  val February = Month.February
+  @deprecated("Please, use [[com.markatta.timeforscala.Month.March]] instead", "com.markatta.timeforscala 1.4")
+  val March = Month.March
+  @deprecated("Please, use [[com.markatta.timeforscala.Month.May]] instead", "com.markatta.timeforscala 1.4")
+  val May = Month.May
+  @deprecated("Please, use [[com.markatta.timeforscala.Month.June]] instead", "com.markatta.timeforscala 1.4")
+  val June = Month.June
+  @deprecated("Please, use [[com.markatta.timeforscala.Month.July]] instead", "com.markatta.timeforscala 1.4")
+  val July = Month.July
+  @deprecated("Please, use [[com.markatta.timeforscala.Month.August]] instead", "com.markatta.timeforscala 1.4")
+  val August = Month.August
+  @deprecated("Please, use [[com.markatta.timeforscala.Month.September]] instead", "com.markatta.timeforscala 1.4")
+  val September = Month.September
+  @deprecated("Please, use [[com.markatta.timeforscala.Month.October]] instead", "com.markatta.timeforscala 1.4")
+  val October = Month.October
+  @deprecated("Please, use [[com.markatta.timeforscala.Month.November]] instead", "com.markatta.timeforscala 1.4")
+  val November = Month.November
+  @deprecated("Please, use [[com.markatta.timeforscala.Month.December]] instead", "com.markatta.timeforscala 1.4")
+  val December = Month.December
 
+  type Clock = java.time.Clock
+  type Month = java.time.Month
+  type Year = java.time.Year
+  type DayOfWeek = java.time.DayOfWeek
   type LocalTime = java.time.LocalTime
   type Instant = java.time.Instant
   type YearMonth = java.time.YearMonth
@@ -50,7 +63,18 @@ package object timeforscala {
   type LocalDateTime = java.time.LocalDateTime
   type ZonedDateTime = java.time.ZonedDateTime
   type Period = java.time.Period
+  type ZoneId = java.time.ZoneId
+  type ZoneOffset = java.time.ZoneOffset
+
+  type IsoChronology = java.time.chrono.IsoChronology
+  type Chronology = java.time.chrono.Chronology
 
   type DateTimeFormatter = java.time.format.DateTimeFormatter
+  type FormatStyle = java.time.format.FormatStyle
 
+  type Temporal = java.time.temporal.Temporal
+  type TemporalUnit = java.time.temporal.TemporalUnit
+  type TemporalAccessor = java.time.temporal.TemporalAccessor
+  type TemporalAmount = java.time.temporal.TemporalAmount
+  type ChronoUnit = java.time.temporal.ChronoUnit
 }
