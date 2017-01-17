@@ -1,14 +1,14 @@
 # time for scala
 [![Build Status](https://travis-ci.org/johanandren/timeforscala.svg)](https://travis-ci.org/johanandren/timeforscala)
 
-A minimal library of factories and implicit decorators for the Java 8 time API (java.time.*)
+A minimal library of factories and implicit decorators for the Java 8 time API (`java.time.\*`) 
 to make it more user friendly and concise to use from Scala.
 
 ## Requirements
 Java 8, Scala 2.11.x, 2.12.x
 
 ## Using
-`libraryDependencies += "com.markatta" %% "timeforscala" % "1.3"`
+`libraryDependencies += "com.markatta" %% "timeforscala" % "1.4"`
 
 ## Examples
 
