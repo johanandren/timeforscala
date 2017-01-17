@@ -23,7 +23,7 @@ class ZonedDateTimeSpec extends BaseSpec {
   "the zoned date time enrichment" should {
 
     "create instances" in {
-      val instance = ZonedDateTime(LocalDate(2015, 1, 1), LocalTime(20, 30, 10), ZoneId("GMT"))
+      val instance = ZonedDateTime(LocalDate(2015, 1, 1), LocalTime(20, 30, 10), ZoneId(ZoneId.GMT))
 
       instance.localDate shouldEqual LocalDate(2015, 1, 1)
       instance.localTime shouldEqual LocalTime(20, 30, 10)
@@ -31,7 +31,7 @@ class ZonedDateTimeSpec extends BaseSpec {
     }
 
     "unapply" in {
-      val result = ZonedDateTime(LocalDate(2015, 1, 1), LocalTime(20, 30, 10), ZoneId("GMT")) match {
+      val result = ZonedDateTime(LocalDate(2015, 1, 1), LocalTime(20, 30, 10), ZoneId.GmtZoneId) match {
         case ZonedDateTime(datetime, zone) => (datetime, zone)
       }
       result should equal (LocalDateTime(2015, 1, 1, 20, 30, 10), ZoneId("GMT"))
@@ -75,6 +75,8 @@ class ZonedDateTimeSpec extends BaseSpec {
       val formatter = DateTimeFormatter.Rfc1123DateTime
       val result = ZonedDateTime("Sun, 06 Nov 1994 08:49:37 GMT", formatter)
       result shouldEqual ZonedDateTime(LocalDate(1994, 11, 6), LocalTime(8, 49, 37), ZoneId("Z"))
+      result shouldEqual ZonedDateTime(LocalDate(1994, 11, 6), LocalTime(8, 49, 37), ZoneId(ZoneId.Z))
+      result shouldEqual ZonedDateTime(LocalDate(1994, 11, 6), LocalTime(8, 49, 37), ZoneId.ZZoneId)
     }
   }
 

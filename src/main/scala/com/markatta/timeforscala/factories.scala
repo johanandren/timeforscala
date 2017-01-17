@@ -424,6 +424,17 @@ object ZoneId {
 
   final val ShortIds: Map[String, String] = java.time.ZoneId.SHORT_IDS.asScala.toMap
 
+  final val `GMT` = "GMT"
+  final val `UTC` = "UTC"
+  final val `UT` = "UT"
+  final val `Z` = "Z"
+
+  final val GmtZoneId: ZoneId = java.time.ZoneId.of(GMT)
+  final val UtcZoneId: ZoneId = java.time.ZoneId.of(UTC)
+  final val UtZoneId: ZoneId = java.time.ZoneId.of(UT)
+  final val ZZoneId: ZoneId = java.time.ZoneId.of(Z)
+
+
   def apply(zoneId: String): ZoneId = java.time.ZoneId.of(zoneId)
   def apply(zoneId: String, aliasMap: Map[String, String]): ZoneId = {
     java.time.ZoneId.of(zoneId, aliasMap.asJava)
