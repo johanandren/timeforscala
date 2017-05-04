@@ -1,3 +1,3 @@
-addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "0.2.2")
+addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "1.1")
 
-addSbtPlugin("com.github.gseitz" % "sbt-release" % "0.8.5")
+addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.4")
