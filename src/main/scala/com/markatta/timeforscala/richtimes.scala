@@ -16,7 +16,6 @@
 
 package com.markatta.timeforscala
 
-import java.util.concurrent.TimeUnit
 
 import scala.concurrent.duration.FiniteDuration
 
@@ -110,6 +109,12 @@ final class RichInstant private[timeforscala](i: Instant) extends Ordered[Instan
   def nano: Int = i.getNano
   def epochSecond: Long = i.getEpochSecond
   override def compare(that: Instant): Int = i.compareTo(that)
+
+  def -(amount: TemporalAmount): RichInstant = i.minus(amount)
+  def -(amount: Long, unit: TemporalUnit): RichInstant = i.minus(amount, unit)
+
+  def +(amount: TemporalAmount): RichInstant = i.plus(amount)
+  def +(amount: Long,  unit: TemporalUnit): RichInstant = i.plus(amount, unit)
 }
 
 final class RichDuration private[timeforscala](d: Duration) extends Ordered[Duration] {
@@ -127,10 +132,10 @@ final class RichDuration private[timeforscala](d: Duration) extends Ordered[Dura
   def *(scalar: Long): Duration = d.multipliedBy(scalar)
 
   def toFiniteDuration: FiniteDuration = {
-    val seconds = FiniteDuration(d.getSeconds, TimeUnit.SECONDS)
+    val seconds = FiniteDuration(d.getSeconds, TimeUnit.Seconds)
     val nanos = d.getNano
     if (nanos == 0) seconds
-    else seconds + FiniteDuration(d.getNano, TimeUnit.NANOSECONDS)
+    else seconds + FiniteDuration(d.getNano, TimeUnit.NanoSeconds)
   }
 
   override def compare(other: Duration): Int = d.compareTo(other)

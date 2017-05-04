@@ -65,6 +65,7 @@ package object timeforscala {
   type Period = java.time.Period
   type ZoneId = java.time.ZoneId
   type ZoneOffset = java.time.ZoneOffset
+  type TimeUnit = java.util.concurrent.TimeUnit
 
   type IsoChronology = java.time.chrono.IsoChronology
   type Chronology = java.time.chrono.Chronology
