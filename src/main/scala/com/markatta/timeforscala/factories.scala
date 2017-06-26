@@ -436,9 +436,14 @@ object ZoneId {
 
 
   def apply(zoneId: String): ZoneId = java.time.ZoneId.of(zoneId)
-  def apply(zoneId: String, aliasMap: Map[String, String]): ZoneId = {
-    java.time.ZoneId.of(zoneId, aliasMap.asJava)
-  }
+
+  def apply(zoneId: String, aliasMap: Map[String, String]): ZoneId = java.time.ZoneId.of(zoneId, aliasMap.asJava)
+
+  def apply(prefix: String, offset: ZoneOffset): ZoneId = java.time.ZoneId.ofOffset(prefix, offset)
+
+  def apply(temporal: TemporalAccessor): ZoneId = java.time.ZoneId.from(temporal)
+
+
 }
 
 object ZoneOffset {
@@ -458,6 +463,25 @@ object ZoneOffset {
   def apply(hours: Int, minutes: Int, seconds: Int): ZoneOffset =
     java.time.ZoneOffset.ofHoursMinutesSeconds(hours, minutes, seconds)
 
+  /** @see java.time.ZoneOffset.from(TemporalAccessor) */
   def apply(accessor: TemporalAccessor): ZoneOffset =
     java.time.ZoneOffset.from(accessor)
+}
+
+object TimeUnit {
+
+  final val NanoSeconds: TimeUnit = java.util.concurrent.TimeUnit.NANOSECONDS
+
+  final val MicroSeconds: TimeUnit = java.util.concurrent.TimeUnit.MICROSECONDS
+
+  final val MilliSeconds: TimeUnit = java.util.concurrent.TimeUnit.MILLISECONDS
+
+  final val Seconds: TimeUnit = java.util.concurrent.TimeUnit.SECONDS
+
+  final val Minutes: TimeUnit = java.util.concurrent.TimeUnit.MINUTES
+
+  final val Hours: TimeUnit = java.util.concurrent.TimeUnit.HOURS
+
+  final val Days: TimeUnit = java.util.concurrent.TimeUnit.DAYS
+
 }
