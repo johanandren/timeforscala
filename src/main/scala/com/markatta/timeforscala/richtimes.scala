@@ -110,11 +110,11 @@ final class RichInstant private[timeforscala](i: Instant) extends Ordered[Instan
   def epochSecond: Long = i.getEpochSecond
   override def compare(that: Instant): Int = i.compareTo(that)
 
-  def -(amount: TemporalAmount): RichInstant = i.minus(amount)
-  def -(amount: Long, unit: TemporalUnit): RichInstant = i.minus(amount, unit)
+  def -(amount: TemporalAmount): Instant = i.minus(amount)
+  def -(amount: Long, unit: TemporalUnit): Instant = i.minus(amount, unit)
 
-  def +(amount: TemporalAmount): RichInstant = i.plus(amount)
-  def +(amount: Long,  unit: TemporalUnit): RichInstant = i.plus(amount, unit)
+  def +(amount: TemporalAmount): Instant = i.plus(amount)
+  def +(amount: Long,  unit: TemporalUnit): Instant = i.plus(amount, unit)
 }
 
 final class RichDuration private[timeforscala](d: Duration) extends Ordered[Duration] {
