@@ -37,7 +37,7 @@ final class RichLocalDateTime private[timeforscala](l: LocalDateTime) extends Or
   def +(amount: Duration): LocalDateTime = l.plus(amount)
   def -(amount: Duration): LocalDateTime= l.minus(amount)
 
-  def -(other: LocalDateTime): Duration = Duration.between(other, l)
+  def -(other: LocalDateTime): Duration = Duration.between(l, other)
 
   override def compare(that: LocalDateTime): Int = l.compareTo(that)
 }
@@ -55,10 +55,10 @@ final class RichLocalDate private[timeforscala](l: LocalDate) extends Ordered[Lo
   def -(amount: Period): LocalDate = l.minus(amount)
 
   /**
-   * @return the period from other date until this date, exclusive end date
+   * @return the period from this date until other, exclusive end date
    * @see java.time.LocalDate.until(ChronoLocalDate)
    */
-  def -(other: LocalDate): Period = other.until(l)
+  def -(other: LocalDate): Period = l.until(other)
 
   override def compare(that: LocalDate): Int = l.compareTo(that)
 }
@@ -99,7 +99,7 @@ final class RichZonedDateTime private[timeforscala](z: ZonedDateTime) extends Or
   def +(amount: Duration): ZonedDateTime = z.plus(amount)
   def -(amount: Duration): ZonedDateTime = z.minus(amount)
 
-  def -(other: ZonedDateTime): Duration = Duration.between(other, z)
+  def -(other: ZonedDateTime): Duration = Duration.between(z, other)
 
   def chronology: Chronology = z.getChronology
   override def compare(other: ZonedDateTime): Int = z.compareTo(other)
