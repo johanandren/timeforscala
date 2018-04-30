@@ -61,7 +61,7 @@ class ZonedDateTimeSpec extends BaseSpec {
     "calculate the duration between two zoned date times" in {
       val a = ZonedDateTime(LocalDate(2015, 1, 1), LocalTime(20, 30, 10), ZoneId("GMT"))
       val b = ZonedDateTime(LocalDate(2015, 1, 1), LocalTime(20, 50, 10), ZoneId("GMT"))
-      val result = a - b
+      val result = b - a
       result.minutes shouldEqual 20
     }
 

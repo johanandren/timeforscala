@@ -26,7 +26,7 @@ class LocalDateSpec extends BaseSpec {
     }
 
     "calculate period between two dates" in {
-      val result = LocalDate(2015, 1, 1) - LocalDate(2015, 2, 1)
+      val result = LocalDate(2015, 2, 1) - LocalDate(2015, 1, 1)
       result.getMonths should be (1)
     }
 
