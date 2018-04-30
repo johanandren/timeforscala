@@ -45,7 +45,7 @@ class LocalDateTimeSpec extends BaseSpec {
     }
 
     "create a duration between two date times" in {
-      val result = LocalDateTime("2015-05-23T20:30:05") - LocalDateTime("2015-05-24T22:30:25")
+      val result = LocalDateTime("2015-05-24T22:30:25") - LocalDateTime("2015-05-23T20:30:05")
       result.seconds shouldEqual (26 * 60 * 60 + 20)
 
     }
