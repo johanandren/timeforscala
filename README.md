@@ -5,7 +5,7 @@ A minimal library of factories and implicit decorators for the Java 8 time API (
 to make it more user friendly and concise to use from Scala.
 
 ## Requirements
-Java 8, Scala 2.11.x, 2.12.x
+Java 8, Scala 2.11.x, 2.12.x, 2.13.x
 
 ## Using
 `libraryDependencies += "com.markatta" %% "timeforscala" % "1.7"`
