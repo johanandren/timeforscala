@@ -13,6 +13,17 @@ matrix:
     - scala: 2.11.11
       jdk: oraclejdk9
 
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt
+
+before_cache:
+  # Cleanup the cached directories to avoid unnecessary cache updates
+  - rm -fv $HOME/.ivy2/.sbt.ivy.lock
+  - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
+  - find $HOME/.sbt        -name "*.lock"               -print -delete
+
 script:
   - sbt ++$TRAVIS_SCALA_VERSION test:compile
   - sbt ++$TRAVIS_SCALA_VERSION test
