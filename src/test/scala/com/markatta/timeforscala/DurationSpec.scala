@@ -16,6 +16,10 @@
 
 package com.markatta.timeforscala
 
+import java.time.temporal.ChronoUnit
+
+import scala.concurrent.duration.{FiniteDuration, SECONDS}
+
 class DurationSpec extends BaseSpec {
 
   "the duration enrichment" should {
@@ -27,6 +31,16 @@ class DurationSpec extends BaseSpec {
       Seconds(10).seconds shouldEqual 10
       Millis(10).millis shouldEqual 10
       Nanos(10).nanos shouldEqual 10
+      Duration(FiniteDuration(10, SECONDS)).seconds shouldEqual 10
+      Duration(10, ChronoUnit.MINUTES).minutes shouldEqual 10
+      Duration(Duration(10)).seconds shouldEqual 10
+    }
+
+    "calculate duration" in {
+      Duration(15) + Duration(5) shouldEqual Duration(20)
+      Duration(15) - Duration(5) shouldEqual Duration(10)
+      Duration(10) / 2l shouldEqual Duration(5)
+      Duration(10) * 2l shouldEqual Duration(20)
     }
 
     "compare instances" in {
@@ -44,6 +58,20 @@ class DurationSpec extends BaseSpec {
       finite should equal (20.seconds)
     }
 
+    "transform durations with nanosecond to scala finite duration" in {
+      val finite = Duration(20, Duration(1).toNanos / 10).toFiniteDuration
+
+      import scala.concurrent.duration._
+      finite should equal (20.1.seconds)
+    }
+
+    "unapply" in {
+      val result = Duration(10, 20) match {
+        case Duration(second, nano) => (second, nano)
+      }
+
+      result should equal ((10, 20))
+    }
   }
 
 

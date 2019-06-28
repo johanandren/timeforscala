@@ -36,6 +36,11 @@ class LocalTimeSpec extends BaseSpec {
       result shouldEqual LocalTime(20, 32)
     }
 
+    "subtract with a duration" in {
+      val result = LocalTime(20, 32) - Minutes(2)
+      result shouldEqual LocalTime(20, 30)
+    }
+
     "should compare" in {
       val first = LocalTime(20, 30)
       val last = LocalTime(20, 31)
