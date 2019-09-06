@@ -3,6 +3,7 @@ language: scala
 sudo: false
 
 scala:
+  - 2.11.12
   - 2.12.3
   - 2.13.0
 
