@@ -42,6 +42,14 @@ class LocalDateSpec extends BaseSpec {
       result should equal (LocalDate(2015, January, 3))
     }
 
+    "subtract with a period" in {
+      val result = LocalDate(2015, 1, 1) - Days(2)
+      result should equal (LocalDate(2014, December, 30))
+    }
+
+    "compare local dates" in {
+      LocalDate(2019, 1, 1) >= LocalDate(2015, 1, 1) should equal (true)
+    }
   }
 
 }

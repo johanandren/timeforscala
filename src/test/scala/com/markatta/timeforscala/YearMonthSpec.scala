@@ -27,7 +27,7 @@ class YearMonthSpec extends BaseSpec {
      }
 
     "unapply" in {
-      val result = YearMonth(2015, 1) match {
+      val result = YearMonth(2015, January) match {
         case YearMonth(y, m) => (y, m)
       }
       result should equal (2015, January)
@@ -38,6 +38,14 @@ class YearMonthSpec extends BaseSpec {
       result should equal (YearMonth(2015, 2))
     }
 
+    "subtract with a period" in {
+      val result = YearMonth(2015, 1) - Months(1)
+      result should equal (YearMonth(2014, 12))
+    }
+
+    "compare YearMonth" in {
+      YearMonth(2015, 1) <= YearMonth(2019, 1) should equal (true)
+    }
   }
 
 }

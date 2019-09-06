@@ -40,6 +40,10 @@ class PeriodSpec extends BaseSpec {
       (Days(2) - Days(1)) shouldEqual Days(1)
     }
 
+    "multiply" in {
+      (Days(10) * 2) shouldEqual Days(20)
+    }
+
     "compare instances" in {
       Days(20) > Days(19) should be (true)
     }
@@ -49,6 +53,19 @@ class PeriodSpec extends BaseSpec {
 
       import scala.concurrent.duration._
       finite should equal (20.seconds)
+    }
+
+    "between two local date" in {
+      val result = Period.between(LocalDate(1, 2, 3), LocalDate(4, 5, 6))
+      result should equal (Period(3, 3, 3))
+    }
+
+    "unapply" in {
+      val result = Period(1, 2, 3) match {
+        case Period(year, month, day) => (year, month, day)
+      }
+
+      result should equal ((1, 2, 3))
     }
 
   }

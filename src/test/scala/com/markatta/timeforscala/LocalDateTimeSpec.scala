@@ -25,7 +25,7 @@ class LocalDateTimeSpec extends BaseSpec {
     }
 
     "add a period" in {
-      val result = LocalDateTime(2015, 1, 1, 20, 30, 5) + Days(2)
+      val result = LocalDateTime(LocalDate(2015, 1, 1), LocalTime(20, 30, 5)) + Days(2)
       result shouldEqual LocalDateTime(2015, January, 3, 20, 30, 5)
     }
 
@@ -35,8 +35,8 @@ class LocalDateTimeSpec extends BaseSpec {
     }
 
     "add a duration" in {
-      val result = LocalDateTime(2015, 1, 1, 20, 30, 5) + Hours(2)
-      result shouldEqual LocalDateTime(2015, January, 1, 22, 30, 5)
+      val result = LocalDateTime(2015, 1, 1, 20, 30, 0) + Hours(2)
+      result shouldEqual LocalDateTime(2015, January, 1, 22, 30)
     }
 
     "subtract a duration" in {
@@ -47,9 +47,11 @@ class LocalDateTimeSpec extends BaseSpec {
     "create a duration between two date times" in {
       val result = LocalDateTime("2015-05-24T22:30:25") - LocalDateTime("2015-05-23T20:30:05")
       result.seconds shouldEqual (26 * 60 * 60 + 20)
-
     }
 
+    "compare local date times" in {
+      LocalDateTime(2015, 1, 1, 23, 0, 0) >= LocalDateTime(2015, 1, 1, 12, 0, 0) shouldEqual true
+    }
   }
 
 }
