@@ -28,6 +28,9 @@ package object timeforscala {
   implicit def richZonedDateTime(zdt: ZonedDateTime): RichZonedDateTime = new RichZonedDateTime(zdt)
   implicit def richPeriod(p: Period): RichPeriod = new RichPeriod(p)
 
+  def minimum[T](one: T, another: T)(implicit order: Ordering[T]): T = if(order.compare(one, another) <= 0) one else another
+  def maximum[T](one: T, another: T)(implicit order: Ordering[T]): T = if(order.compare(one, another) <= 0) another else one
+
   @deprecated("Please, use [[com.markatta.timeforscala.Month.January]] instead", "com.markatta.timeforscala 1.4")
   val January = Month.January
   @deprecated("Please, use [[com.markatta.timeforscala.Month.February]] instead", "com.markatta.timeforscala 1.4")

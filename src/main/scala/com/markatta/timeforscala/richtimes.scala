@@ -40,6 +40,9 @@ final class RichLocalDateTime private[timeforscala](l: LocalDateTime) extends Or
   def -(other: LocalDateTime): Duration = Duration.between(other, l)
 
   override def compare(that: LocalDateTime): Int = l.compareTo(that)
+
+  def min(other: LocalDateTime): LocalDateTime = minimum(l, other)
+  def max(other: LocalDateTime): LocalDateTime = maximum(l, other)
 }
 
 final class RichLocalDate private[timeforscala](l: LocalDate) extends Ordered[LocalDate] {
@@ -61,6 +64,9 @@ final class RichLocalDate private[timeforscala](l: LocalDate) extends Ordered[Lo
   def -(other: LocalDate): Period = other.until(l)
 
   override def compare(that: LocalDate): Int = l.compareTo(that)
+
+  def min(other: LocalDate): LocalDate = minimum(l, other)
+  def max(other: LocalDate): LocalDate = maximum(l, other)
 }
 
 final class RichLocalTime private[timeforscala](l: LocalTime) extends Ordered[LocalTime] {
@@ -73,6 +79,9 @@ final class RichLocalTime private[timeforscala](l: LocalTime) extends Ordered[Lo
   def -(duration: Duration): LocalTime = l.minus(duration)
 
   override def compare(that: LocalTime): Int = l.compareTo(that)
+
+  def min(other: LocalTime): LocalTime = minimum(l, other)
+  def max(other: LocalTime): LocalTime = maximum(l, other)
 }
 
 final class RichZonedDateTime private[timeforscala](z: ZonedDateTime) extends Ordered[ZonedDateTime] {
@@ -115,6 +124,9 @@ final class RichInstant private[timeforscala](i: Instant) extends Ordered[Instan
 
   def +(amount: TemporalAmount): Instant = i.plus(amount)
   def +(amount: Long,  unit: TemporalUnit): Instant = i.plus(amount, unit)
+
+  def min(other: Instant): Instant = minimum(i, other)
+  def max(other: Instant): Instant = maximum(i, other)
 }
 
 final class RichDuration private[timeforscala](d: Duration) extends Ordered[Duration] {
@@ -139,6 +151,9 @@ final class RichDuration private[timeforscala](d: Duration) extends Ordered[Dura
   }
 
   override def compare(other: Duration): Int = d.compareTo(other)
+
+  def min(other: Duration): Duration = minimum(d, other)
+  def max(other: Duration): Duration = maximum(d, other)
 }
 
 final class RichPeriod private[timeforscala](p: Period) extends Ordered[Period] {

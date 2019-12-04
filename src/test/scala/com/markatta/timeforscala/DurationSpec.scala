@@ -49,6 +49,12 @@ class DurationSpec extends BaseSpec {
       Duration(19) < Duration(20) should be (true)
       Duration(20) == Duration(20) should be (true)
       Duration(20) != Duration(21) should be (true)
+
+      Minutes(2) min Minutes(1) should be (Minutes(1))
+      Minutes(1) min Minutes(1) should be (Minutes(1))
+
+      Minutes(2) max Minutes(1) should be (Minutes(2))
+      Minutes(2) max Minutes(2) should be (Minutes(2))
     }
 
     "transform durations in to scala finite durations" in {
