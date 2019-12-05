@@ -28,4 +28,4 @@ script: sbt -no-colors -J-Xss2m ++$TRAVIS_SCALA_VERSION test
 
 env:
   global:
-    - TRAVIS_JDK=adopt@~1.8.202-08
+    - TRAVIS_JDK=adopt@~1.8-0
