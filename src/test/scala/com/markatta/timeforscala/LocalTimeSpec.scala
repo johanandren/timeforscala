@@ -48,6 +48,12 @@ class LocalTimeSpec extends BaseSpec {
       (first < last) shouldBe true
       (last > first) shouldBe true
       (last != first) shouldBe true
+
+      (first min last) shouldBe first
+      (first min first) shouldBe first
+
+      (first max last) shouldBe last
+      (last max last) shouldBe last
     }
 
   }
