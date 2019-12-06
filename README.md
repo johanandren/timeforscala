@@ -8,7 +8,7 @@ to make it more user friendly and concise to use from Scala.
 Java 8, Scala 2.11.x, 2.12.x, 2.13.x
 
 ## Using
-`libraryDependencies += "com.markatta" %% "timeforscala" % "1.8"`
+`libraryDependencies += "com.markatta" %% "timeforscala" % "1.9"`
 
 ## Examples
 
